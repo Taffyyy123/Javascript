@@ -4,7 +4,10 @@ const container = document.getElementById("container");
 const List = document.createElement("ul");
 List.className = "listContainer";
 container.appendChild(List);
-const arr = [];
+let arr = [];
+const confirmContainer = document.createElement("div");
+container.appendChild(confirmContainer);
+confirmContainer.className = "confirmContainer";
 
 let count = 0;
 
@@ -16,7 +19,19 @@ button.addEventListener("click", function () {
   }
   let div = document.createElement("div");
   let differentId = count++;
-  div.id = differentId;
+
+  const date = new Date();
+  const formatter = new Intl.DateTimeFormat("en-GB", {
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+  const formattedTime = formatter.format(date);
+  let divContainer = document.createElement("div");
+  divContainer.className = "text";
+  divContainer.id = differentId;
   div.className = "text";
   let trash = document.createElement("button");
   trash.id = "trashCan";
@@ -32,7 +47,8 @@ button.addEventListener("click", function () {
   buttonContainer.className = "buttonContainer";
   for (let i = 0; i < arr.length; i++) {
     div.textContent = arr[i];
-    List.appendChild(div);
+    divContainer.appendChild(div);
+    List.appendChild(divContainer);
     buttonContainer.appendChild(editButton);
     buttonContainer.appendChild(confirmBtn);
     buttonContainer.appendChild(trash);
@@ -48,7 +64,7 @@ button.addEventListener("click", function () {
   });
   function editList() {
     let editInput = document.createElement("input");
-    editInput.className = "editing-input";
+    editInput.id = "editingInput";
     let doneBtn = document.createElement("button");
     doneBtn.innerHTML = "Done";
     doneBtn.className = "editing-done";
@@ -61,12 +77,13 @@ button.addEventListener("click", function () {
       const di = document.getElementById(`${differentId}`);
       di.textContent = editInput.value;
       buttonContainer.appendChild(editButton);
-      buttonContainer.appendChild(trash);
       buttonContainer.appendChild(confirmBtn);
+      buttonContainer.appendChild(trash);
       div.appendChild(buttonContainer);
     }
     doneBtn.addEventListener("click", function () {
-      if (editInput.length == 0) {
+      let edit = document.getElementById("editingInput");
+      if (edit.length == 0) {
         console.log("working");
       } else {
         clickingDone();
@@ -77,4 +94,12 @@ button.addEventListener("click", function () {
   editButton.addEventListener("click", function () {
     editList();
   });
+  confirmBtn.addEventListener("click", function () {
+    const confirmID = document.getElementById(`${differentId}`);
+    confirmContainer.appendChild(confirmID);
+    confirmBtn.remove();
+    editButton.remove();
+  });
+  input.value = "";
+  arr = [];
 });
