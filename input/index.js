@@ -21,79 +21,40 @@ function isValidPhoneNumber() {
   const number = phonenumber.value;
   if (number.length < 8) {
     alert("8 oron hurehgu bn");
+  } else {
     for (let i = 0; i < number.length; i++) {
       if (number.includes(alphabet[i])) {
         alert("invalid phone number");
         break;
-      }
-    }
-  } else {
-    result += 1;
-  }
-}
-
-function isValidPassword() {
-  const password = Password.value;
-  if (password.length < 8) {
-    alert("8 oron hurehgu bn");
-    for (let i = 0; i < password.length; i++) {
-      if (password.includes(alphabet[i]) === true) {
-        if (password.includes(too[i]) === true) {
-        }
       } else {
-        alert("invalid password");
-        break;
-      }
-      for (let i = 0; i < password.length; i++) {
-        if (password.includes(number[i])) {
-          alert("invalid phone number");
-          break;
-        }
+        result += 1;
       }
     }
   }
 }
-// function isValidPass() {
-//   const password = password.value;
-//   if (password.length < 8) {
-//     alert("Password is Too Short");
-//   } else {
-//     alert("Password Perfect");
-//     isGood += 1;
-//   }
-//   if (password.includes(alphabet)) {
-//     alert("Please add more symbols and letters.");
-//   }
-//   itBig(isPassValid);
-//   if (isItTrue == false) {
-//     alert("Add a UpperCase Letter");
-//   }
-// }
+let num = 3;
 function isValidPassword() {
   const password = Password.value;
   if (password.length < 8) {
     alert("too_short");
-    return "too_short";
+    num - 1;
   } else if (password.search(/\d/) == -1) {
     alert("nothing number");
-    return "no_num";
+    num - 1;
   } else if (password.search(/[a-zA-Z]/) == -1) {
     alert("nothing letter");
-    return "no_letter";
-  } else if (
-    password.search(/[^a-zA-Z0-9\!\@\#\$\%\^\&\*\(\)\_\+\.\,\;\:]/) != -1
-  ) {
-    alert("nothing mark");
-    return "bad_char";
+    num - 1;
   }
-  result += 1;
 }
 button.addEventListener("click", function () {
   isValidEmail();
   isValidPhoneNumber();
   isValidPassword();
+  if (num >= 3) {
+    result += 1;
+  }
   if (result >= 3) {
-    window.location.href = "/javascript/todo list";
     result = 0;
+    window.location.href = "/Javascript/todo list";
   }
 });

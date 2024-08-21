@@ -89,8 +89,9 @@ button {
 .buttonContainer {
   display: flex;
   align-items: center;
-  width: 200px;
+  width: 270px;
   justify-content: space-evenly;
+  gap: 10px;
 }
 #editing-input {
   width: 300px;
@@ -131,4 +132,7 @@ button {
   display: flex;
   flex-direction: column;
   gap: 10px;
+}
+#time {
+  font-size: 16px;
 }

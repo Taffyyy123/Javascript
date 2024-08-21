@@ -12,14 +12,6 @@ confirmContainer.className = "confirmContainer";
 let count = 0;
 
 button.addEventListener("click", function () {
-  let text = input.value;
-  if (text.length == 0) {
-  } else {
-    arr.push(text);
-  }
-  let div = document.createElement("div");
-  let differentId = count++;
-
   const date = new Date();
   const formatter = new Intl.DateTimeFormat("en-GB", {
     year: "numeric",
@@ -28,10 +20,18 @@ button.addEventListener("click", function () {
     hour: "2-digit",
     minute: "2-digit",
   });
-  const formattedTime = formatter.format(date);
-  let divContainer = document.createElement("div");
-  divContainer.className = "text";
-  divContainer.id = differentId;
+  let formattedTime = formatter.format(date);
+  let time = document.createElement("div");
+  time.id = "time";
+  console.log(formattedTime);
+  let text = input.value;
+  if (text.length == 0) {
+  } else {
+    arr.push(text);
+  }
+  let div = document.createElement("div");
+  let differentId = count++;
+  div.id = differentId;
   div.className = "text";
   let trash = document.createElement("button");
   trash.id = "trashCan";
@@ -47,14 +47,14 @@ button.addEventListener("click", function () {
   buttonContainer.className = "buttonContainer";
   for (let i = 0; i < arr.length; i++) {
     div.textContent = arr[i];
-    divContainer.appendChild(div);
-    List.appendChild(divContainer);
+    List.appendChild(div);
+    time.innerHTML = formattedTime;
+    buttonContainer.appendChild(time);
     buttonContainer.appendChild(editButton);
     buttonContainer.appendChild(confirmBtn);
     buttonContainer.appendChild(trash);
     div.appendChild(buttonContainer);
   }
-
   function deleteList() {
     let idContainer = document.getElementById(differentId);
     idContainer.remove();
@@ -76,6 +76,8 @@ button.addEventListener("click", function () {
     function clickingDone() {
       const di = document.getElementById(`${differentId}`);
       di.textContent = editInput.value;
+      time.innerHTML = formattedTime;
+      buttonContainer.appendChild(time);
       buttonContainer.appendChild(editButton);
       buttonContainer.appendChild(confirmBtn);
       buttonContainer.appendChild(trash);
