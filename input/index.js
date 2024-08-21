@@ -55,6 +55,6 @@ button.addEventListener("click", function () {
   }
   if (result >= 3) {
     result = 0;
-    window.location.href = "/Javascript/todo list";
+    window.location.href = "./todo.html";
   }
 });
