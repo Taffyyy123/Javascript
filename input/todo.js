@@ -75,32 +75,57 @@ button.addEventListener("click", function () {
     div.appendChild(editBtnContainer);
     function clickingDone() {
       const di = document.getElementById(`${differentId}`);
-      di.textContent = editInput.value;
-      time.innerHTML = formattedTime;
-      buttonContainer.appendChild(time);
-      buttonContainer.appendChild(editButton);
-      buttonContainer.appendChild(confirmBtn);
-      buttonContainer.appendChild(trash);
-      div.appendChild(buttonContainer);
+      if (editInput.value == "") {
+      } else {
+        di.textContent = editInput.value;
+        time.innerHTML = formattedTime;
+        buttonContainer.appendChild(time);
+        buttonContainer.appendChild(editButton);
+        buttonContainer.appendChild(confirmBtn);
+        buttonContainer.appendChild(trash);
+        div.appendChild(buttonContainer);
+      }
     }
     doneBtn.addEventListener("click", function () {
-      let edit = document.getElementById("editingInput");
-      if (edit.length == 0) {
-        console.log("working");
-      } else {
-        clickingDone();
-        console.log("failed");
-      }
+      clickingDone();
     });
   }
+  let i = 0;
   editButton.addEventListener("click", function () {
     editList();
+    if (editButton.onclick) {
+      i + 1;
+    }
+    if (i >= 1) {
+      editButton.disabled = true;
+    }
+    console.log(i);
   });
+  const backBtn = document.createElement("button");
+  backBtn.innerHTML = "Back";
+  backBtn.className = "confirm";
   confirmBtn.addEventListener("click", function () {
+    buttonContainer.appendChild(time);
+    buttonContainer.appendChild(editButton);
+    buttonContainer.appendChild(confirmBtn);
+    buttonContainer.appendChild(backBtn);
+    buttonContainer.appendChild(trash);
     const confirmID = document.getElementById(`${differentId}`);
+    confirmID.appendChild(buttonContainer);
     confirmContainer.appendChild(confirmID);
     confirmBtn.remove();
     editButton.remove();
+  });
+  backBtn.addEventListener("click", function () {
+    let backID = document.getElementById(`${differentId}`);
+    buttonContainer.appendChild(time);
+    buttonContainer.appendChild(editButton);
+    buttonContainer.appendChild(confirmBtn);
+    buttonContainer.appendChild(backBtn);
+    buttonContainer.appendChild(trash);
+    backID.appendChild(buttonContainer);
+    List.appendChild(backID);
+    backBtn.remove();
   });
   input.value = "";
   arr = [];
