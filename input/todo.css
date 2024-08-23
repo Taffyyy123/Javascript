@@ -4,20 +4,23 @@ body {
   background-color: blue;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: end;
   height: 100vh;
+  background-image: url("image copy 3.png");
+  background-position: end;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 #container {
-  width: 60%;
-  height: 80%;
-  background-color: white;
+  width: 38%;
+  height: 65%;
+  background-color: rgb(132, 174, 183);
   display: flex;
   align-items: center;
   flex-direction: column;
   gap: 20px;
-  padding-top: 50px;
-  border-radius: 20px;
+  border-radius: 10px;
 }
 input {
   width: 700px;
@@ -40,16 +43,16 @@ button {
 .box {
   display: flex;
   justify-content: center;
-  padding-top: 50px;
+  padding-top: 30px;
   border-radius: 20px;
   width: 700px;
 }
 .text {
   font-size: 20px;
   font-weight: 700;
-  width: 750px;
+  width: 90%;
   height: 50px;
-  background-color: aquamarine;
+  background-color: cornflowerblue;
   padding-left: 20px;
   border-radius: 10px;
   padding-right: 20px;
@@ -57,6 +60,7 @@ button {
   align-items: center;
   border: 1px solid black;
   justify-content: space-between;
+  color: white;
 }
 .listContainer {
   display: flex;
@@ -126,12 +130,14 @@ button {
   align-items: center;
 }
 .confirmContainer {
-  width: 840px;
-  height: 300px;
+  width: 95%;
+  height: 200px;
   overflow: scroll;
   display: flex;
   flex-direction: column;
   gap: 10px;
+  padding-left: 30px;
+  padding-bottom: 30px;
 }
 #time {
   font-size: 16px;
